@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+import apiList from '../Api/apilist'
 const Registration = () => {
     const [getRegistration, setRegistration] = useState({
         firstName: "",
@@ -11,6 +13,19 @@ const Registration = () => {
     const [getFirstName, setFirstName] = useState("");
     const handleSubmit = () => {
         console.log({ getRegistration });
+        const data={
+        first_name:getRegistration.firstName,
+        last_name:getRegistration.lastName,
+        middle_name:getRegistration.middleName,
+        email:getRegistration.email,
+        phone_no:getRegistration.phoneNo,
+        password:getRegistration.password,
+        }
+        axios.post(apiList.register,data).then((res)=>{
+            console.log({res});
+        }).catch((err)=>{
+           alert("Please Try Again")
+        })
     }
     return (
         <>
