@@ -6,6 +6,7 @@ const Home = () => {
             <React.Fragment>
                 <p>Home Page</p>
                 <Link to="/user-login">Login</Link>
+                <Link to="/user-login">Logout</Link>
                 <Link to="/user-register">Register</Link>
             </React.Fragment>
         </>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {Link} from 'react-router-dom'
 import apiList from '../Api/apilist'
 const Registration = () => {
     const [getRegistration, setRegistration] = useState({
@@ -13,22 +14,23 @@ const Registration = () => {
     const [getFirstName, setFirstName] = useState("");
     const handleSubmit = () => {
         console.log({ getRegistration });
-        const data={
-        first_name:getRegistration.firstName,
-        last_name:getRegistration.lastName,
-        middle_name:getRegistration.middleName,
-        email:getRegistration.email,
-        phone_no:getRegistration.phoneNo,
-        password:getRegistration.password,
+        const data = {
+            first_name: getRegistration.firstName,
+            last_name: getRegistration.lastName,
+            middle_name: getRegistration.middleName,
+            email: getRegistration.email,
+            phone_no: getRegistration.phoneNo,
+            password: getRegistration.password,
         }
-        axios.post(apiList.register,data).then((res)=>{
-            console.log({res});
-        }).catch((err)=>{
-           alert("Please Try Again")
+        axios.post(apiList.register, data).then((res) => {
+            alert(res.data.message)
+        }).catch((err) => {
+            alert("Please Try Again")
         })
     }
     return (
         <>
+            <div><Link to='/'>Home</Link></div>
             <p>Registration</p>
             <div>
                 <span><label>First Name</label></span>
