@@ -16,15 +16,9 @@ const Login = () => {
         }
         axios.post(apiList.login, data).then((res) => {
             if (res.data.status == "OK") {
-                alert("login");
-                const userData = {
-                    token: res.data.token
-                }
-                localStorage.setItem('users', userData)
-                console.log("login check");
+                localStorage.setItem('users', JSON.stringify(res.data.data))
                 navigate('/');
             } else {
-                console.log("wrong");
                 alert(res.data.msg)
             }
 
