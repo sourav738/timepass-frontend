@@ -4,7 +4,7 @@ import {
     Routes,
     Route,
 } from 'react-router-dom'
-import AuthRoute from '../Authentication/authentication'
+import AuthRoutes from '../Authentication/authentication'
 import Home from "../Component/Home";
 import Registration from "../Pages/Registration";
 import Login from "../Pages/login"
@@ -13,11 +13,10 @@ const index = () => {
         <>
             <Router>
                 <Routes>
-                    <Route exact path='/' element={<AuthRoute />}>
-                        <Route exact path='/' element={<Home />} />
-                    </Route>
+                    {/* <AuthRoutes path="/" component={Home} /> */}
                     <Route path="/user-register" element={<Registration />} />
-                    <Route path="user-login" element={<Login />} />
+                    <Route path="/user-login" element={<Login />} />
+                    <Route path='/' element={<AuthRoutes><Home></Home></AuthRoutes>} />
                 </Routes>
             </Router>
         </>
