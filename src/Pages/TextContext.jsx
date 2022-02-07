@@ -1,11 +1,14 @@
 import React, { createContext } from "react";
 import ComponentC from "../Component/ComponentC";
 const FirstName = createContext();
+const LastName = createContext();
 const TextContext = () => {
-   return (
+    return (
         <>
-            <FirstName.Provider value={"sourav singh"}>
-                <ComponentC />
+            <FirstName.Provider value={"sourav"}>
+                <LastName.Provider value={"singh"}>
+                    <ComponentC />
+                </LastName.Provider>
             </FirstName.Provider>
             {/* <ComponentC /> */}
         </>
@@ -13,4 +16,4 @@ const TextContext = () => {
     )
 }
 export default TextContext
-export { FirstName };
+export { FirstName,LastName };

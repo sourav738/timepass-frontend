@@ -1,14 +1,19 @@
 import React from "react";
-import { FirstName } from "../Pages/TextContext";
+import { FirstName,LastName } from "../Pages/TextContext";
 const ComponentC = () =>{
     return (
         <>
         <FirstName.Consumer>
             {(fname)=>{
                 return(
-                    <>
-                    My name is {fname}
-                    </>
+                    <LastName.Consumer>
+                        {(lname)=>{
+                            return(
+                              <>My name is {fname} {lname}</>
+                            )
+                        }}
+                    </LastName.Consumer>
+                   
                 )
             }}
         </FirstName.Consumer>
