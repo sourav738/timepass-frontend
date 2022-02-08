@@ -5,7 +5,7 @@ const LastName = createContext();
 const TextContext = () => {
     return (
         <>
-            <FirstName.Provider value={"sourav"}>
+           <FirstName.Provider value={"sourav"}>
                 <LastName.Provider value={"singh"}>
                     <ComponentC />
                 </LastName.Provider>
