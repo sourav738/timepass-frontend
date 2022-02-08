@@ -18,9 +18,7 @@ const Home = () => {
     }, [])
     const onHandleLogout = () => {
         localStorage.removeItem('users')
-        console.log("logout");
     }
-
     const imageUpload = (event) => {
         event.preventDefault();
         const dataArray = new FormData();
@@ -31,15 +29,11 @@ const Home = () => {
                 'Content-Type': 'multipart/form-data',
             },
         };
-
         axios.post(apiList.imageUpload, dataArray, formDataHeader).then((res) => {
             alert("Successfully uploaded");
-            console.log({ res });
         }).catch((err) => {
-            console.log({ err });
         })
     }
-
     return (
         <>
             <React.Fragment>
@@ -54,11 +48,9 @@ const Home = () => {
                     <Link to="/user-register">Register</Link>
                 }
                 <form onSubmit={imageUpload}>
-
                     <input type="file" onChange={(e) => setUploadFile(e.target.files[0])} />
                     <input type="submit" />
                 </form>
-
             </React.Fragment>
         </>
     )
