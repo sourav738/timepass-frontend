@@ -11,6 +11,7 @@ const Home = () => {
     const [imageToCrop, setImageToCrop] = useState(undefined);
     const [croppedImage, setCroppedImage] = useState(undefined);
     const [getImage, setImage] = useState('');
+    const [isDisable, setDisable] = useState(false)
     useEffect(() => {
         if (userData) {
             setLoggedIn(true)
@@ -21,6 +22,7 @@ const Home = () => {
     }
     const imageUpload = (event) => {
         event.preventDefault();
+        setDisable(true)
         const dataArray = new FormData();
         dataArray.append("profilephoto", uploadFile);
         const formDataHeader = {
@@ -30,8 +32,10 @@ const Home = () => {
             },
         };
         axios.post(apiList.imageUpload, dataArray, formDataHeader).then((res) => {
+            setDisable(false)
             alert("Successfully uploaded");
         }).catch((err) => {
+            setDisable(false)
         })
     }
     return (
@@ -47,9 +51,11 @@ const Home = () => {
                 {!getLoggedIn &&
                     <Link to="/user-register">Register</Link>
                 }
+
+                <Link to="/add-member">Add Member</Link>
                 <form onSubmit={imageUpload}>
                     <input type="file" onChange={(e) => setUploadFile(e.target.files[0])} />
-                    <input type="submit" />
+                    <input type="submit" className={isDisable ? 'disabled' : ''} />
                 </form>
             </React.Fragment>
         </>
