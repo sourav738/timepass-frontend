@@ -13,4 +13,4 @@ const Wrapper = (Originalcomponent) => {
     }
     return NewComp
 }
-export default Wrapper;
+export default Wrapper;    
