@@ -8,7 +8,7 @@ const HigherOrderComponentA = (props) =>{
         <>
         <p>{props.name}</p>
         <p>{props.count}</p>
-        <button  onMouseEnter={props.clickHandler}>click me A</button>
+        <button onMouseEnter={props.clickHandler}>click me A</button>
         </>
     );
 }

@@ -4,6 +4,8 @@ import ReactCrop from 'react-image-crop';
 import ImageCropper from "../ImageCropper";
 import axios from "axios";
 import apiList from '../../Api/apilist'
+import Header from "../Layout/Header";
+import CardComponent from "../Layout/Card";
 const Home = () => {
     const [uploadFile, setUploadFile] = React.useState();
     const [getLoggedIn, setLoggedIn] = useState(false);
@@ -40,8 +42,11 @@ const Home = () => {
     }
     return (
         <>
+
             <React.Fragment>
-                <p>Home Page</p>
+                <Header></Header>
+                <CardComponent></CardComponent>
+                {/* <p>Home Page</p>
                 {!getLoggedIn &&
                     <Link to="/user-login">Login</Link>
                 }
@@ -56,7 +61,7 @@ const Home = () => {
                 <form onSubmit={imageUpload}>
                     <input type="file" onChange={(e) => setUploadFile(e.target.files[0])} />
                     <input type="submit" className={isDisable ? 'disabled' : ''} />
-                </form>
+                </form> */}
             </React.Fragment>
         </>
     )
