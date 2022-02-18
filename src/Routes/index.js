@@ -4,7 +4,6 @@ import {
     Routes,
     Route,
 } from 'react-router-dom'
-import "antd/dist/antd.css"
 import AuthRoutes from '../Authentication/authentication'
 import Home from "../Component/Home";
 import Registration from "../Pages/Registration";

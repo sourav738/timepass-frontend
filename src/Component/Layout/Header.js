@@ -2,10 +2,9 @@ import React from 'react'
 import { PageHeader, Menu, Dropdown, Button, Tag, Typography, Row } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
 import logo from '../../logo.jpg';
+import { useNavigate } from 'react-router-dom';
 //import "antd/dist/antd.css"
-
 const { Paragraph } = Typography;
-
 const menu = (
     <Menu>
         <Menu.Item>
@@ -100,19 +99,24 @@ const Content = ({ children, extraContent }) => (
         <div className="image">{extraContent}</div>
     </Row>
 );
+
 const Header = () => {
+    const navigate = useNavigate();
+    const onHandleLogin = () => {
+        console.log("change");
+        navigate('/user-login')
+    }
     return (
         <PageHeader
             title="Singh Transport"
             className="site-page-header"
             extra={[
-                <Button key="1" type="primary">
-                    Login|Register
+                <Button onClick={onHandleLogin} key="1" type="primary">
+                    Login
                 </Button>,
                 <DropdownMenu key="more" />,
             ]}
             avatar={{ src: logo }}
-
         >
         </PageHeader>
     )
