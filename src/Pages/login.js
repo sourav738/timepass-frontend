@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { setUserData } from "../actions";
+
 import apiList from '../Api/apilist'
 const Login = () => {
     const navigate = useNavigate();
-   
+    const dispatch = useDispatch()
     const [getLogin, setLogin] = useState({
         email: '',
         password: ''
     })
     const post = useSelector(state =>
-       console.log({state})
-      )
+        console.log({ state })
+    )
     const handleSubmit = () => {
         console.log("login data");
         const data = {
@@ -22,6 +25,12 @@ const Login = () => {
         axios.post(apiList.login, data).then((res) => {
             if (res.data.status == "OK") {
                 localStorage.setItem('users', JSON.stringify(res.data.data))
+                try {
+                    dispatch(setUserData(res.data.data))
+                } catch (err) {
+                    console.log({ err })
+                }
+
                 navigate('/');
             } else {
                 alert(res.data.msg)

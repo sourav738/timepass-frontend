@@ -1,15 +1,17 @@
-const initialUserData={
-    id:1,
-    name:"sourav"
+const initialData ={
+   
 }
-const authData= (state=initialUserData,action) =>{
+const authData= (state=initialData,action) =>{
+    console.log({state,action})
     switch(action.type){
         case "SET_USER_DATA":
+            const {id,data} =action.payload;
             return{
-                state 
+                data:data
+              
             }
             default: return state
     }
-
 }
 export default authData
+

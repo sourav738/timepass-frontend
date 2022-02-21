@@ -1,6 +1,16 @@
 import authData from './authData'
 import {combineReducers} from "redux"
-const authdata = combineReducers({
+const rootReducer = combineReducers({
     authData
 })
-export default authdata;
+export default rootReducer;
+
+// import authData from './authData';
+// import {
+//     combineReducers
+// } from "redux"
+
+// const rootReducer = combineReducers({
+//     authData
+// })
+// export default rootReducer
