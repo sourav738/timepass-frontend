@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import apiList from '../Api/apilist'
 const Login = () => {
     const navigate = useNavigate();
+   
     const [getLogin, setLogin] = useState({
         email: '',
         password: ''
     })
+    const post = useSelector(state =>
+       console.log({state})
+      )
     const handleSubmit = () => {
         console.log("login data");
         const data = {
