@@ -1,15 +1,19 @@
-import React from 'react'
-import { PageHeader, Menu, Dropdown, Button, Tag, Typography, Row } from 'antd';
+import React, { useEffect, useState } from 'react'
+import { PageHeader, Menu, Dropdown, Button, Tag, Typography, Row, Modal } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
 import logo from '../../logo.jpg';
 import { useNavigate } from 'react-router-dom';
 //import "antd/dist/antd.css"
 const { Paragraph } = Typography;
+
+const onUpdateProfile = () =>{
+    alert("update profile")
+}
 const menu = (
     <Menu>
         <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-                1st menu item
+            <a onClick={onUpdateProfile} >
+               Update Profile
             </a>
         </Menu.Item>
         <Menu.Item>
@@ -100,25 +104,56 @@ const Content = ({ children, extraContent }) => (
     </Row>
 );
 
-const Header = () => {
+const Header = (props) => {
+    const authData = JSON.parse(localStorage.getItem('users'))
+    const isLoggedIn = Boolean(authData.token)
+    const [getLoggedIn, setLoggedIn] = useState(false)
+    const [getModalOpan, setModalOpen] = useState(false)
+    console.log("props values are", props)
     const navigate = useNavigate();
     const onHandleLogin = () => {
         console.log("change");
+        if (getLoggedIn) {
+            setModalOpen(true)
+        } else {
+            navigate('/user-login')
+        }
+
+    }
+    const handleOk = () => {
+        localStorage.setItem('users','')
+        setModalOpen(true)
         navigate('/user-login')
     }
+    const handleCancel = () => {
+        setModalOpen(false)
+    }
+    useEffect(() => {
+        setLoggedIn(isLoggedIn)
+    },[])
+
     return (
-        <PageHeader
-            title="Singh Transport"
-            className="site-page-header"
-            extra={[
-                <Button onClick={onHandleLogin} key="1" type="primary">
-                    Login
-                </Button>,
-                <DropdownMenu key="more" />,
-            ]}
-            avatar={{ src: logo }}
-        >
-        </PageHeader>
+        <React.Fragment>
+            <PageHeader
+                title="Singh Transport"
+                className="site-page-header"
+                extra={[
+                    <Button onClick={onHandleLogin} key="1" type="primary">
+                        {props.logedin ? 'Logout' : 'Login'}
+                    </Button>,
+                    <DropdownMenu key="more" />,
+                ]}
+                avatar={{ src: logo }}
+            >
+            </PageHeader>
+
+            <Modal title="Logout" visible={getModalOpan} onOk={handleOk} onCancel={handleCancel}>
+                <p>Are You Sure Want to Logout...</p>
+                
+            </Modal>
+
+
+        </React.Fragment>
     )
 
 }

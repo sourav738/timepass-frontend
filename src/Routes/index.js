@@ -18,11 +18,11 @@ const index = () => {
                 <Routes>
                     {/* <AuthRoutes path="/" component={Home} /> */}
                     <Route path="/user-register" element={<Registration />} />
-                    <Route path="/user-login" element={<Login />} />
+                    <Route path="/user-login" element={<Login></Login>} />
                     <Route path="/context-test" element={<TestContext />} />
                     <Route path="/hoc-test" element={<TestHigherOrder />} />
-                    {/* <Route path='/' element={<AuthRoutes><Home></Home></AuthRoutes>} /> */}
-                    <Route path='/' element={<Home></Home>} />
+                    <Route path='/' element={<AuthRoutes><Home></Home></AuthRoutes>} />
+                    {/* <Route path='/' element={<Home></Home>} /> */}
                     <Route path='/add-member' element={<AuthRoutes><AddMember></AddMember></AuthRoutes>} />
                 </Routes>
             </Router>

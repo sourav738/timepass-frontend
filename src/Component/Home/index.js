@@ -44,7 +44,7 @@ const Home = () => {
         <>
 
             <React.Fragment>
-                <Header></Header>
+                <Header logedin={getLoggedIn}></Header>
                 <CardComponent></CardComponent>
                 {/* <p>Home Page</p>
                 {!getLoggedIn &&
