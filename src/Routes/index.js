@@ -11,6 +11,7 @@ import Login from "../Pages/login"
 import TestContext from "../Pages/TextContext"
 import AddMember from "../Component/AddMember"
 import TestHigherOrder from "../Component/TestHigherOrder";
+import UpdateProfile from "../Pages/UpdateProfile"
 const index = () => {
     return (
         <>
@@ -22,6 +23,7 @@ const index = () => {
                     <Route path="/context-test" element={<TestContext />} />
                     <Route path="/hoc-test" element={<TestHigherOrder />} />
                     <Route path='/' element={<AuthRoutes><Home></Home></AuthRoutes>} />
+                    <Route path="update-profile" element={<AuthRoutes><UpdateProfile></UpdateProfile></AuthRoutes>} />
                     {/* <Route path='/' element={<Home></Home>} /> */}
                     <Route path='/add-member' element={<AuthRoutes><AddMember></AddMember></AuthRoutes>} />
                 </Routes>
