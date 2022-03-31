@@ -8,16 +8,14 @@ const { Paragraph } = Typography;
 
 
 const Header = (props) => {
-    const onUpdateProfile = () =>{
-        alert("update profile")
-      
+    const onUpdateProfile = () => {
         navigate('/update-profile')
     }
     const menu = (
         <Menu>
             <Menu.Item>
                 <a onClick={onUpdateProfile} >
-                   Update Profile
+                    Update Profile
                 </a>
             </Menu.Item>
             <Menu.Item>
@@ -32,7 +30,7 @@ const Header = (props) => {
             </Menu.Item>
         </Menu>
     );
-    
+
     const DropdownMenu = () => (
         <Dropdown key="more" overlay={menu}>
             <Button
@@ -50,7 +48,7 @@ const Header = (props) => {
             </Button>
         </Dropdown>
     );
-    
+
     const routes = [
         {
             path: 'index',
@@ -65,14 +63,14 @@ const Header = (props) => {
             breadcrumbName: 'Third-level Menu',
         },
     ];
-    
+
     const IconLink = ({ src, text }) => (
         <a className="example-link">
             <img className="example-link-icon" src={src} alt={text} />
             {text}
         </a>
     );
-    
+
     const content = (
         <>
             <Paragraph>
@@ -100,14 +98,14 @@ const Header = (props) => {
             </div>
         </>
     );
-    
+
     const Content = ({ children, extraContent }) => (
         <Row>
             <div style={{ flex: 1 }}>{children}</div>
             <div className="image">{extraContent}</div>
         </Row>
     );
-   // const navigate=useNavigate()
+    // const navigate=useNavigate()
     const authData = JSON.parse(localStorage.getItem('users'))
     const isLoggedIn = Boolean(authData.token)
     const [getLoggedIn, setLoggedIn] = useState(false)
@@ -124,17 +122,17 @@ const Header = (props) => {
 
     }
     const handleOk = () => {
-        localStorage.setItem('users','')
+        localStorage.setItem('users', '')
         setModalOpen(true)
         navigate('/user-login')
     }
     const handleCancel = () => {
         setModalOpen(false)
     }
-    
+
     useEffect(() => {
         setLoggedIn(isLoggedIn)
-    },[])
+    }, [])
 
     return (
         <React.Fragment>
@@ -153,7 +151,7 @@ const Header = (props) => {
 
             <Modal title="Logout" visible={getModalOpan} onOk={handleOk} onCancel={handleCancel}>
                 <p>Are You Sure Want to Logout...</p>
-                
+
             </Modal>
 
 

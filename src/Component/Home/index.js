@@ -14,10 +14,23 @@ const Home = () => {
     const [croppedImage, setCroppedImage] = useState(undefined);
     const [getImage, setImage] = useState('');
     const [isDisable, setDisable] = useState(false)
+    const [getProfile, setProfile] = useState([])
     useEffect(() => {
         if (userData) {
             setLoggedIn(true)
         }
+        const formDataHeader = {
+            headers: {
+                'token': userData.token,
+                'Content-Type': 'application/json',
+            },
+        };
+        axios.get(apiList.userList, formDataHeader).then((res) => {
+            console.log({ res })
+            setProfile(res.data)
+        }).catch((err) => {
+            console.log({ err })
+        })
     }, [])
     const onHandleLogout = () => {
         localStorage.removeItem('users')
@@ -45,23 +58,8 @@ const Home = () => {
 
             <React.Fragment>
                 <Header logedin={getLoggedIn}></Header>
-                <CardComponent></CardComponent>
-                {/* <p>Home Page</p>
-                {!getLoggedIn &&
-                    <Link to="/user-login">Login</Link>
-                }
-                {getLoggedIn &&
-                    <p onClick={onHandleLogout} >Logout</p>
-                }
-                {!getLoggedIn &&
-                    <Link to="/user-register">Register</Link>
-                }
+                <CardComponent data={getProfile}></CardComponent>
 
-                <Link to="/add-member">Add Member</Link>
-                <form onSubmit={imageUpload}>
-                    <input type="file" onChange={(e) => setUploadFile(e.target.files[0])} />
-                    <input type="submit" className={isDisable ? 'disabled' : ''} />
-                </form> */}
             </React.Fragment>
         </>
     )

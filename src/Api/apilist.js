@@ -4,5 +4,6 @@ module.exports={
     login:Base_url+'/users/login',
     imageUpload:Base_url+'/users/photo-upload',
     getcode:Base_url+'/users/get-code',
-    getProfile:Base_url+'/users/get-profile'
+    getProfile:Base_url+'/users/get-profile',
+    userList:Base_url+'/users/list'
 }

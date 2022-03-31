@@ -1,15 +1,29 @@
 import React from 'react'
 import { Card } from 'antd';
 const { Meta } = Card;
-const CardComponent = () => {
+const CardComponent = (props) => {
+    console.log({ props })
     return (
-        <Card
-            hoverable
-            style={{ width: 240 }}
-            cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-        >
-            <Meta title="Europe Street beat" description="www.instagram.com" />
-        </Card>
+        <>
+            {props?.data &&
+
+                props.data.map((item, key) => {
+                    const name=item.first_name +" "+item.last_name
+                    return (
+
+                        <Card
+                            hoverable
+                            style={{ width: 240 }}
+                            cover={<img alt="example" src={item?.avatar ? item.avatar : 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png'} />}
+                        >
+                            <Meta title={name} description="www.instagram.com" />
+                        </Card>
+                    )
+                })
+
+            }
+        </>
+
     )
 }
 export default CardComponent
